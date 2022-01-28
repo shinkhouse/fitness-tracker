@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { WelcomeRoutingModule } from './welcome-routing.module';
 import { WelcomeComponent } from './welcome.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { WelcomeComponent } from './welcome.component';
   ],
   imports: [
     CommonModule,
-    WelcomeRoutingModule
+    WelcomeRoutingModule,
+    FlexLayoutModule
   ]
 })
 export class WelcomeModule { }
