@@ -1,14 +1,11 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <div fxFlexLayout="row" fxLayoutGap="16px">
-            <a routerLink="">Welcome</a>
-            <a routerLink="/signup">signup</a>
-            <a routerLink="/login">login</a>
-            <a routerLink="/training/new">new training</a>
-            <a routerLink="/training/current">Current training</a>
-            <a routerLink="/training/past">Past Training</a>
-        </div>
-    </mat-toolbar-row>
-</mat-toolbar>
-
-<router-outlet></router-outlet>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="over" #sidenav>
+        <app-sidenavigation (sidenavToggle)="sidenav.toggle()"></app-sidenavigation>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PastTrainingRoutingModule } from './past-training-routing.module';
 import { PastTrainingComponent } from './past-training.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -11,7 +12,11 @@ import { PastTrainingComponent } from './past-training.component';
   ],
   imports: [
     CommonModule,
-    PastTrainingRoutingModule
+    PastTrainingRoutingModule,
+    FlexLayoutModule
+  ],
+  exports: [
+    PastTrainingComponent
   ]
 })
 export class PastTrainingModule { }
