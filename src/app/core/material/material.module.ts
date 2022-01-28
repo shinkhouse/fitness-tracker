@@ -15,6 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const MATERIAL_MODULES = [
     MatButtonModule,
@@ -31,7 +32,8 @@ const MATERIAL_MODULES = [
     MatCheckboxModule,
     MatListModule,
     MatTabsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
 ];
 @NgModule({
     imports: MATERIAL_MODULES,

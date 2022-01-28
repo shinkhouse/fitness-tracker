@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderModule } from './core/components/header/header.module';
 import { SidenavigationModule } from './core/components/sidenavigation/sidenavigation.module';
+import { StopTrainingModule } from './pages/training/pages/stop-training/stop-training.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SidenavigationModule } from './core/components/sidenavigation/sidenavig
     FormsModule,
     ReactiveFormsModule,
     HeaderModule,
-    SidenavigationModule
+    SidenavigationModule,
+    StopTrainingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
