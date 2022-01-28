@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="onSidenavToggle()" fxHide.gt-xs>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div fxFlex></div>
+        <mat-nav-list fxLayout="row" fxLayoutGap="16px" fxHide.xs>
+            <a mat-list-item routerLink="/" routerLinkActive="active">
+                <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
+                    <mat-icon>cottage</mat-icon>
+                    <span>Welcome</span>
+                </div>
+            </a>
+            <a mat-list-item routerLink="/signup" routerLinkActive="active">
+                <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
+                    <mat-icon>password</mat-icon>
+                    <span>Signup</span>
+                </div>
+            </a>
+            <a mat-list-item routerLink="/login" routerLinkActive="active">
+                <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
+                    <mat-icon>login</mat-icon>
+                    <span>Login</span>
+                </div>
+            </a>
+            <a
+                mat-list-item
+                routerLink="/training"
+                routerLinkActive="active"
+            >
+                <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
+                    <mat-icon>fitness_center</mat-icon>
+                    <span>Training</span>
+                </div>
+            </a>
+        </mat-nav-list>
+    </mat-toolbar-row>
+</mat-toolbar>
