@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderModule } from './core/components/header/header.module';
 import { SidenavigationModule } from './core/components/sidenavigation/sidenavigation.module';
 import { StopTrainingModule } from './pages/training/pages/stop-training/stop-training.module';
+import { AuthService } from './core/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { StopTrainingModule } from './pages/training/pages/stop-training/stop-tr
     SidenavigationModule,
     StopTrainingModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
