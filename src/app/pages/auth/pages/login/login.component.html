@@ -29,16 +29,19 @@
                 ngModel
                 name="password"
                 required
-                minlength="6"
                 #psInput="ngModel"
             />
-            <mat-hint>Password must be six or more characters long.</mat-hint>
-            <mat-error>Password must be six or more characters long.</mat-error>
-            <mat-hint align="end">{{ psInput.value?.length }} / 6</mat-hint>
+            <mat-error>Password is required.</mat-error>
         </mat-form-field>
         <div fxLayout="row">
             <div fxFlex></div>
-            <button type="submit" mat-stroked-button [disabled]="loginForm.invalid">Login</button>
+            <button
+                type="submit"
+                mat-stroked-button
+                [disabled]="loginForm.invalid"
+            >
+                Login
+            </button>
         </div>
     </form>
 </section>

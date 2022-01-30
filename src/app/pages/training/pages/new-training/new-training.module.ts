@@ -5,6 +5,7 @@ import { NewTrainingRoutingModule } from './new-training-routing.module';
 import { NewTrainingComponent } from './new-training.component';
 import { MaterialModule } from 'src/app/core/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     NewTrainingRoutingModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     NewTrainingComponent

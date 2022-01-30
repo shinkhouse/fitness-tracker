@@ -11,6 +11,7 @@ import { HeaderModule } from './core/components/header/header.module';
 import { SidenavigationModule } from './core/components/sidenavigation/sidenavigation.module';
 import { StopTrainingModule } from './pages/training/pages/stop-training/stop-training.module';
 import { AuthService } from './core/services/auth.service';
+import { ExerciseService } from './core/services/exercise.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AuthService } from './core/services/auth.service';
     SidenavigationModule,
     StopTrainingModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, ExerciseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
