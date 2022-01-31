@@ -18,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     NewTrainingComponent
