@@ -2,10 +2,10 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { filter, Subscription } from 'rxjs';
 import { Exercise } from 'src/app/core/models/exercise.model';
 import { ExerciseService } from 'src/app/core/services/exercise/exercise.service';
-
+import { Store } from '@ngrx/store';
+import * as fromTraining from '../../training.reducer';
 @Component({
     selector: 'app-past-training',
     templateUrl: './past-training.component.html',
@@ -13,22 +13,15 @@ import { ExerciseService } from 'src/app/core/services/exercise/exercise.service
 })
 export class PastTrainingComponent implements OnInit, AfterViewInit {
     public pastExercises: Exercise[] = [];
-    pastExerciseSubscription: Subscription;
     displayedColumns = ['date', 'name', 'duration', 'calories', 'state'];
     dataSource = new MatTableDataSource<Exercise>();
 
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-    constructor(private exerciseService: ExerciseService) {}
+    constructor(private exerciseService: ExerciseService, private store: Store<fromTraining.State>) {}
 
     ngOnInit(): void {
         this.getPastExercises();
-    }
-
-    ngOnDestroy() {
-        if (this.pastExerciseSubscription) {
-            this.pastExerciseSubscription.unsubscribe();
-        }
     }
 
     ngAfterViewInit(): void {
@@ -38,10 +31,9 @@ export class PastTrainingComponent implements OnInit, AfterViewInit {
 
     getPastExercises() {
         this.exerciseService.fetchPastExercises();
-        this.pastExerciseSubscription = this.exerciseService.finishedExercisesChanged.subscribe((res: Exercise[]) => {
+        this.store.select(fromTraining.getFinishedExercises).subscribe((res: Exercise[]) => {
             this.pastExercises = res;
             this.dataSource.data = this.pastExercises;
-            console.log(res);
         });
     }
 

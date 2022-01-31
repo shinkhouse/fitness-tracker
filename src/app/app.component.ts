@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, Observable, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { AuthService } from './core/services/auth/auth.service';
 import { UIService } from './core/services/ui/ui.service';
 import { Store } from '@ngrx/store';
