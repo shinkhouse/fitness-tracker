@@ -22,6 +22,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
+import { UIService } from './core/services/ui.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -46,7 +47,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth'
         AngularFireStorageModule,
         AngularFireAuthModule,
     ],
-    providers: [AuthService, ExerciseService, ScreenTrackingService, UserTrackingService],
+    providers: [AuthService, ExerciseService, ScreenTrackingService, UserTrackingService, UIService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

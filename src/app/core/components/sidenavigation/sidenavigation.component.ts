@@ -1,10 +1,4 @@
-import {
-    Component,
-    EventEmitter,
-    OnDestroy,
-    OnInit,
-    Output,
-} from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
@@ -26,7 +20,9 @@ export class SidenavigationComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.authSubscription.unsubscribe();
+        if (this.authSubscription) {
+            this.authSubscription.unsubscribe();
+        }
     }
 
     onSidenavToggle() {

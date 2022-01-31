@@ -10,3 +10,12 @@
 mat-sidenav {
     width: 300px;
 }
+
+.loading-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 999999;
+    top: calc(50% - 100px);
+    left: 50%;
+}
