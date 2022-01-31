@@ -16,6 +16,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,11 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
     StopTrainingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase())
+    provideDatabase(() => getDatabase()),
+    provideAnalytics(() => getAnalytics()),
+    provideFirestore(() => getFirestore())
   ],
-  providers: [AuthService, ExerciseService],
+  providers: [AuthService, ExerciseService, ScreenTrackingService,UserTrackingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
