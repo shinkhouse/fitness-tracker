@@ -5,6 +5,7 @@ import { PastTrainingRoutingModule } from './past-training-routing.module';
 import { PastTrainingComponent } from './past-training.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/app/core/material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { MaterialModule } from 'src/app/core/material/material.module';
     CommonModule,
     PastTrainingRoutingModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     PastTrainingComponent
