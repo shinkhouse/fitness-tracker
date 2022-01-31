@@ -18,29 +18,35 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HeaderModule,
-    SidenavigationModule,
-    StopTrainingModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideAnalytics(() => getAnalytics()),
-    provideFirestore(() => getFirestore())
-  ],
-  providers: [AuthService, ExerciseService, ScreenTrackingService,UserTrackingService],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        FlexLayoutModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HeaderModule,
+        SidenavigationModule,
+        StopTrainingModule,
+        // provideFirebaseApp(() => initializeApp(environment.firebase)),
+        // provideAuth(() => getAuth()),
+        // provideDatabase(() => getDatabase()),
+        // provideAnalytics(() => getAnalytics()),
+        // provideFirestore(() => getFirestore())
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule.enablePersistence(),
+        AngularFireStorageModule,
+        AngularFireAuthModule,
+    ],
+    providers: [AuthService, ExerciseService, ScreenTrackingService, UserTrackingService],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

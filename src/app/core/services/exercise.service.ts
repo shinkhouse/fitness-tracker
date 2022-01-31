@@ -1,28 +1,53 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { Exercise } from '../models/exercise.model';
+import { map, Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ExerciseService {
     exerciseChanged: Subject<Exercise> = new Subject<Exercise>();
-    private availableExercises: Exercise[] = [
-        { id: 'crunches', name: 'Crunches', duration: 30, calories: 8 },
-        { id: 'touch-toes', name: 'Touch Toes', duration: 180, calories: 15 },
-        { id: 'side-lunges', name: 'Side Lunges', duration: 120, calories: 18 },
-        { id: 'burpees', name: 'Burpees', duration: 60, calories: 8 },
-    ];
+    exercisesChanged: Subject<Exercise[]> = new Subject<Exercise[]>();
+    finishedExercisesChanged: Subject<Exercise[]> = new Subject<Exercise[]>();
+    private availableExercises: Exercise[] = [];
     private runningExercise!: Exercise;
-    private exercises: Exercise[] = [];
-    constructor() {}
+    private availableExercisesCollection: AngularFirestoreCollection;
+    public exercise: Exercise;
+    public collectionRef: any;
+    private fbSubs: Subscription[] = [];
 
-    getAvailableExercises(): Exercise[] {
-        return [...this.availableExercises];
+    constructor(private afs: AngularFirestore) {}
+
+    fetchAvailableExercises() {
+        this.availableExercisesCollection = this.afs.collection('availableExercises');
+        this.fbSubs.push(this.availableExercisesCollection
+            .snapshotChanges()
+            .pipe(
+                map((actions) =>
+                    actions.map((a) => {
+                        const data = a.payload.doc.data() as Exercise;
+                        const id = a.payload.doc.id;
+                        console.log({ id, ...data });
+                        return { id, ...data };
+                    })
+                )
+            )
+            .subscribe((exercises: Exercise[]) => {
+                this.availableExercises = exercises;
+                this.exercisesChanged.next([...this.availableExercises]);
+            }, error => {
+
+            }));
     }
 
-    getPastExercises(): Exercise[] {
-      return [...this.exercises];
+    fetchPastExercises(){
+        this.fbSubs.push(this.afs.collection('finishedExercises').valueChanges().subscribe((exercises: Exercise[]) => {
+            this.finishedExercisesChanged.next(exercises);
+        }, error => {
+
+        }));
     }
 
     startExercise(selectedId: string) {
@@ -35,17 +60,17 @@ export class ExerciseService {
     }
 
     completeExercise() {
-        this.exercises.push({ ...this.runningExercise, date: new Date(), state: 'completed' });
+        this.addDataToFirestore({ ...this.runningExercise, date: new Date(), state: 'completed' });
         this.runningExercise = null;
         this.exerciseChanged.next(null);
     }
 
     cancelExercise(progress: number) {
-        this.exercises.push({
+        this.addDataToFirestore({
             ...this.runningExercise,
             duration: this.runningExercise.duration * (progress / 100),
-            calories: this.runningExercise.calories * (progress / 100),
-            date: new Date(),
+            calories: this.runningExercise.duration * (progress / 100),
+            date: new Date().toISOString(),
             state: 'cancelled',
         });
         this.runningExercise = null;
@@ -54,5 +79,13 @@ export class ExerciseService {
 
     getRunningExercise(): Exercise {
         return { ...this.runningExercise };
+    }
+
+    cancelSubscriptions() {
+        this.fbSubs.forEach((sub) => sub.unsubscribe());
+    }
+
+    private addDataToFirestore(exercise) {
+        this.afs.collection('finishedExercises').add(exercise);
     }
 }
