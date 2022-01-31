@@ -21,6 +21,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 import { UIService } from './core/services/ui.service';
 import { SharedModule } from './core/modules/shared/shared.module';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
     declarations: [AppComponent],
@@ -41,6 +42,7 @@ import { SharedModule } from './core/modules/shared/shared.module';
         AngularFirestoreModule.enablePersistence(),
         AngularFireStorageModule,
         AngularFireAuthModule,
+        StoreModule.forRoot({}, {}),
     ],
     providers: [AuthService, ExerciseService, ScreenTrackingService, UserTrackingService, UIService],
     bootstrap: [AppComponent],
