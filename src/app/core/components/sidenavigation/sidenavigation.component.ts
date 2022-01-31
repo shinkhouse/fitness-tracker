@@ -1,28 +1,21 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
+import { Observable, Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth/auth.service';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../../app.reducer';
 
 @Component({
     selector: 'app-sidenavigation',
     templateUrl: './sidenavigation.component.html',
     styleUrls: ['./sidenavigation.component.scss'],
 })
-export class SidenavigationComponent implements OnInit, OnDestroy {
+export class SidenavigationComponent implements OnInit {
     @Output() sidenavToggle = new EventEmitter<void>();
-    public isAuth: boolean = false;
-    public authSubscription: Subscription = new Subscription();
-    constructor(private auth: AuthService) {}
+    public isAuth$: Observable<boolean>;
+    constructor(private auth: AuthService, private store: Store<fromRoot.State>) {}
 
     ngOnInit(): void {
-        this.authSubscription = this.auth.authChange.subscribe((res) => {
-            this.isAuth = res;
-        });
-    }
-
-    ngOnDestroy(): void {
-        if (this.authSubscription) {
-            this.authSubscription.unsubscribe();
-        }
+        this.isAuth$ = this.store.select(fromRoot.getIsAuthenticated);
     }
 
     onSidenavToggle() {

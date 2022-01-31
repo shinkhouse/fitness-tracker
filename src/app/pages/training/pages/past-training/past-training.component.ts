@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { filter, Subscription } from 'rxjs';
 import { Exercise } from 'src/app/core/models/exercise.model';
-import { ExerciseService } from 'src/app/core/services/exercise.service';
+import { ExerciseService } from 'src/app/core/services/exercise/exercise.service';
 
 @Component({
     selector: 'app-past-training',

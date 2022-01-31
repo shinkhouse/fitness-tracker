@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Exercise } from 'src/app/core/models/exercise.model';
-import { ExerciseService } from 'src/app/core/services/exercise.service';
+import { ExerciseService } from 'src/app/core/services/exercise/exercise.service';
 import { map, Observable, Subscription } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 @Component({

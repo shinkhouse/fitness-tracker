@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ExerciseService } from 'src/app/core/services/exercise.service';
+import { ExerciseService } from 'src/app/core/services/exercise/exercise.service';
 
 @Component({
   selector: 'app-training',

@@ -15,19 +15,19 @@
                     <span>Welcome</span>
                 </div>
             </a>
-            <a *ngIf="!isAuth" mat-list-item routerLink="/signup" routerLinkActive="active">
+            <a *ngIf="!(isAuth$ | async)" mat-list-item routerLink="/signup" routerLinkActive="active">
                 <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
                     <mat-icon>password</mat-icon>
                     <span>Signup</span>
                 </div>
             </a>
-            <a *ngIf="!isAuth" mat-list-item routerLink="/login" routerLinkActive="active">
+            <a *ngIf="!(isAuth$ | async)" mat-list-item routerLink="/login" routerLinkActive="active">
                 <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
                     <mat-icon>login</mat-icon>
                     <span>Login</span>
                 </div>
             </a>
-            <a *ngIf="isAuth"
+            <a *ngIf="isAuth$ | async"
                 mat-list-item
                 routerLink="/training"
                 routerLinkActive="active"
@@ -37,7 +37,7 @@
                     <span>Training</span>
                 </div>
             </a>
-            <a *ngIf="isAuth"
+            <a *ngIf="isAuth$ | async"
             (click)="onLogout()"
                 mat-list-item
             >

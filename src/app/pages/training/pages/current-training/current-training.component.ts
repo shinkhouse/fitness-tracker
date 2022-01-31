@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Exercise } from 'src/app/core/models/exercise.model';
-import { ExerciseService } from 'src/app/core/services/exercise.service';
+import { ExerciseService } from 'src/app/core/services/exercise/exercise.service';
 import { StopTrainingComponent } from '../stop-training/stop-training.component';
 
 @Component({

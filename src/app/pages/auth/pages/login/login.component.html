@@ -38,7 +38,7 @@
             <button
                 type="submit"
                 mat-stroked-button
-                [disabled]="loginForm.invalid || isLoading"
+                [disabled]="loginForm.invalid || (isLoading$ | async)"
             >
                 Login
             </button>

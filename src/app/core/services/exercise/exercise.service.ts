@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { Exercise } from '../models/exercise.model';
+import { Exercise } from '../../models/exercise.model';
 import { map, Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { UIService } from './ui.service';
+import { UIService } from '../ui/ui.service';
 
 @Injectable({
     providedIn: 'root',

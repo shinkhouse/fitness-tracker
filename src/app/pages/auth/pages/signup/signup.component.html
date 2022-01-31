@@ -27,7 +27,7 @@
         <mat-checkbox ngModel name="termsConditions" #termsInput="ngModel" required>I agree to the terms and conditions for this site.</mat-checkbox>
         <div fxLayout="row">
             <div fxFlex></div>
-            <button type="submit" mat-stroked-button [disabled]="signUpForm.invalid || isLoading">Create User</button>
+            <button type="submit" mat-stroked-button [disabled]="signUpForm.invalid || (isLoading$ | async)">Create User</button>
         </div>
     </form>
 </section>
