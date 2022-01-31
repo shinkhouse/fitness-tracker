@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PastTrainingRoutingModule } from './past-training-routing.module';
 import { PastTrainingComponent } from './past-training.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from 'src/app/core/material/material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/core/modules/shared/shared.module';
 
 
 @NgModule({
@@ -15,10 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     PastTrainingRoutingModule,
-    FlexLayoutModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   exports: [
     PastTrainingComponent

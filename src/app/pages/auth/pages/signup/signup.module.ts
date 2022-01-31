@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SignupRoutingModule } from './signup-routing.module';
 import { SignupComponent } from './signup.component';
-import { MaterialModule } from 'src/app/core/material/material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatNativeDateModule } from '@angular/material/core';
+import { SharedModule } from 'src/app/core/modules/shared/shared.module';
 
 
 @NgModule({
@@ -14,10 +11,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     imports: [
         CommonModule,
         SignupRoutingModule,
-        MaterialModule,
-        FlexLayoutModule,
-        FormsModule,
-        ReactiveFormsModule
+        SharedModule
     ],
 })
 export class SignupModule {}

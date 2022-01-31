@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidenavigationComponent } from './sidenavigation.component';
-import { MaterialModule } from '../../material/material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../../modules/shared/shared.module';
 
 
 
@@ -13,8 +12,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    MaterialModule,
-    FlexLayoutModule, 
+    SharedModule,
     RouterModule
   ],
   exports: [

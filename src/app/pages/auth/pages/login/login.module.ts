@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
-import { MaterialModule } from 'src/app/core/material/material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from 'src/app/core/modules/shared/shared.module';
 
 
 @NgModule({
@@ -15,10 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    MaterialModule,
-    FlexLayoutModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule
   ]
 })
 export class LoginModule { }
